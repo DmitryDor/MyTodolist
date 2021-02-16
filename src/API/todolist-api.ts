@@ -21,12 +21,27 @@ export  type  ResponseType<T = {}> = {
     data: T
 }
 
+export enum TaskStatuses {
+    New = 0,
+    InProgress,
+    Completed,
+    Draft
+}
+
+export enum TodoTaskPriorities {
+    Low,
+    Middle,
+    Hi,
+    Urgently,
+    Later
+}
+
 export type TaskType = {
     description: string
     title: string
     completed: boolean
-    status: number
-    priority: number
+    status: TaskStatuses
+    priority: TodoTaskPriorities
     startDate: string
     deadline: string
     id: string
@@ -63,6 +78,5 @@ export const todolistAPI = {
     updateTasks(todolistId: string, taskId: string, title: string) {
         return instance.put(`todo-lists/${todolistId}/tasks/${taskId}`, {title})
     }
-
 }
 
