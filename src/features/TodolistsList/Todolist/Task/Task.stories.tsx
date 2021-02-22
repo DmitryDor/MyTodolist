@@ -1,7 +1,7 @@
 import React from 'react'
 import {action} from '@storybook/addon-actions'
 import {Task} from './Task'
-import {TaskStatuses, TodoTaskPriorities} from "./API/todolist-api";
+import {TaskStatuses, TodoTaskPriorities} from "../../../../api/todolist-api";
 
 export default {
     title: 'Task Stories',

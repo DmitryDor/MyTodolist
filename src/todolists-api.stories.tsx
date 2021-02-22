@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 
-import {todolistAPI} from "./API/todolist-api";
+import {todolistAPI} from "./api/todolist-api";
 
 export default {
-    title: 'API-TODOLISTS'
+    title: 'api-TODOLISTS'
 }
 
 export const GetTodolists = () => {

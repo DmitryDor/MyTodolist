@@ -8,62 +8,8 @@ const instance = axios.create({
     }
 })
 
-export type TodolistType = {
-    addedDate: string
-    id: string
-    order: number
-    title: string
-}
 
-export  type  ResponseType<T = {}> = {
-    resultCode: number
-    messages: Array<string>
-    data: T
-}
-
-export enum TaskStatuses {
-    New = 0,
-    InProgress,
-    Completed,
-    Draft
-}
-
-export enum TodoTaskPriorities {
-    Low,
-    Middle,
-    Hi,
-    Urgently,
-    Later
-}
-
-export type TaskType = {
-    description: string
-    title: string
-    completed: boolean
-    status: TaskStatuses
-    priority: TodoTaskPriorities
-    startDate: string
-    deadline: string
-    id: string
-    todoListId: string
-    order: number
-    addedDate: string
-}
-type GetTasksResponseType = {
-    items: Array<TaskType>
-    totalCount: number
-    error: string | null
-}
-
-export type UpdateTaskModelType = {
-    title: string
-    description: string
-    status: TaskStatuses
-    priority: TodoTaskPriorities
-    startDate: string
-    deadline: string
-}
-
+// api
 
 export const todolistAPI = {
     getTodolist() {
@@ -93,3 +39,55 @@ export const todolistAPI = {
     }
 }
 
+// types
+
+export type TodolistType = {
+    addedDate: string
+    id: string
+    order: number
+    title: string
+}
+export  type  ResponseType<T = {}> = {
+    resultCode: number
+    messages: Array<string>
+    data: T
+}
+export enum TaskStatuses {
+    New = 0,
+    InProgress,
+    Completed,
+    Draft
+}
+export enum TodoTaskPriorities {
+    Low,
+    Middle,
+    Hi,
+    Urgently,
+    Later
+}
+export type TaskType = {
+    description: string
+    title: string
+    completed: boolean
+    status: TaskStatuses
+    priority: TodoTaskPriorities
+    startDate: string
+    deadline: string
+    id: string
+    todoListId: string
+    order: number
+    addedDate: string
+}
+type GetTasksResponseType = {
+    items: Array<TaskType>
+    totalCount: number
+    error: string | null
+}
+export type UpdateTaskModelType = {
+    title: string
+    description: string
+    status: TaskStatuses
+    priority: TodoTaskPriorities
+    startDate: string
+    deadline: string
+}
