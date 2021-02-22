@@ -49,7 +49,6 @@ function AppWithRedux() {
     }, []);
 
     const changeStatus = useCallback((id: string, status: TaskStatuses, todolistId: string) => {
-        debugger
         dispatch(updateTaskTC(id, {status}, todolistId))
     }, []);
 

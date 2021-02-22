@@ -103,7 +103,7 @@ export const addTaskAC = (task: TaskType): AddTaskActionType => {
 }
 
 export const updateTaskAC = (taskId: string, module: UpdateDomainTaskModelType, todolistId: string): UpdateTaskActionType => {
-    return {type: "UPDATE-TASK", taskId, module, todolistId }
+    return {type: "UPDATE-TASK", taskId, module, todolistId}
 }
 
 export const setTasksAC = (todolistId: string, tasks: Array<TaskType>): SetTaskActionType => {
@@ -140,7 +140,7 @@ type UpdateDomainTaskModelType = {
 export const updateTaskTC = (taskId: string, domainModel: UpdateDomainTaskModelType, todolistId: string) => {
     return (dispatch: Dispatch, getState: () => AppRootStateType) => {
         const state = getState()
-        const task = state.tasks[todolistId].find(t => t.id = taskId)
+        const task = state.tasks[todolistId].find(t => t.id === taskId)
         if (!task) {
             console.warn('Task not found ')
             return
