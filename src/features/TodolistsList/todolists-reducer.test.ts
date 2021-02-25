@@ -6,6 +6,7 @@ import {
     todolistsReducer
 } from './todolists-reducer';
 import {v1} from 'uuid';
+import {RequestStatusType} from "../../app/appReducer";
 
 
 let todolistId1: string;
@@ -16,8 +17,8 @@ beforeEach(() => {
     todolistId1 = v1();
     todolistId2 = v1();
     startState = [
-        {id: todolistId1, title: "What to learn", filter: "all", addedDate: '', order: 0},
-        {id: todolistId2, title: "What to buy", filter: "all", addedDate: '', order: 0}
+        {id: todolistId1, title: "What to learn", filter: "all", addedDate: '', order: 0, entityStatus: "idle"},
+        {id: todolistId2, title: "What to buy", filter: "all", addedDate: '', order: 0, entityStatus: "idle"}
     ]
 })
 
@@ -67,6 +68,17 @@ test('todolists should be set to the state', () => {
     const endState = todolistsReducer([], action);
 
     expect(endState.length).toBe(2);
+});
+
+test('correct entitystatus of todolist should be changed', () => {
+    let newStatus: RequestStatusType = "loading";
+
+    const action = changeTodolistFilterAC(todolistId2, newStatus);
+
+    const endState = todolistsReducer(startState, action);
+
+    expect(endState[0].entityStatus).toBe("idle");
+    expect(endState[1].filter).toBe('loading');
 });
 
 
