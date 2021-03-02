@@ -16,6 +16,7 @@ import {AddItemForm} from "../../components/AddItemForm/AddItemForm";
 import {Todolist} from "./Todolist/Todolist";
 import {TasksStateType} from "../../app/App";
 import {TaskStatuses} from "../../api/todolist-api";
+import {Redirect} from "react-router-dom";
 
 
 type TodolistsListPropsType = {
@@ -26,10 +27,12 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({demo = false, .
 
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLogenIn)
+
     const dispatch = useDispatch();
-    console.log(props.children)
+
     useEffect(() => {
-        if(demo){
+        if (demo || !isLoggedIn) {
             return
         }
         dispatch(setTodolistsTC())
@@ -68,6 +71,10 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({demo = false, .
     const addTodolist = useCallback((title: string) => {
         dispatch(addTodolistTC(title))
     }, []);
+
+    if (!isLoggedIn) {
+        return <Redirect to={'/login'}/>
+    }
 
     return (
         <>

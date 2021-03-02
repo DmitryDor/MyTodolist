@@ -6,18 +6,17 @@ import App from './app/App';
 import {store} from './app/store';
 import {Provider} from 'react-redux';
 import AppExample from "./trash/AppExample";
+import {BrowserRouter} from "react-router-dom";
 
-// для   подтягивания изменений в этих файлах
-
-const importApp = <AppExample/>
-const importAppWithRedux = <App/>
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-        {/*<AppExample/>*/}
-        {/*<App/>*/}
-    </Provider>, document.getElementById('root'));
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+            {/*<AppExample/>*/}
+            {/*<App/>*/}
+        </Provider>
+    </BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
